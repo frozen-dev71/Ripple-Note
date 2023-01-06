@@ -58,12 +58,12 @@ const Header = ({ user, logout, currentPage }) => {
           {!user && (
             <div className="flex">
               <Link to="/login">
-                <button className="bg-[#ffab91] font-bold text-[0.90rem] mr-5 px-5 py-1 rounded-md hover:bg-rose-500 hover:translate-y-[6px] transition-all duration-300">
+                <button className="bg-[#ffab91] font-bold text-[0.90rem] mr-5 px-5 py-1 rounded-md hover:bg-teal-500 hover:translate-y-[6px] transition-all duration-300">
                   Sign In
                 </button>
               </Link>
               <Link to="/register">
-                <button className="bg-teal-400 font-bold text-[0.90rem] px-5 py-1 rounded-md hover:bg-rose-500 hover:translate-y-[6px] transition-all duration-300">
+                <button className="bg-teal-400 font-bold text-[0.90rem] px-5 py-1 rounded-md hover:bg-teal-500 hover:translate-y-[6px] transition-all duration-300">
                   Sign Up
                 </button>
               </Link>
@@ -77,7 +77,7 @@ const Header = ({ user, logout, currentPage }) => {
               </div>
               <button
                 onClick={logout}
-                className="bg-rose-500 font-bold text-[0.90rem] px-5 py-1 rounded-md hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300"
+                className="bg-teal-500 font-bold text-[0.90rem] px-5 py-1 rounded-md hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300"
               >
                 logout
               </button>
@@ -85,6 +85,91 @@ const Header = ({ user, logout, currentPage }) => {
           )}
         </nav>
       </div>
+	    {/* mobile header */}
+		<div
+        className={`sm:hidden w-full h-[70px] px-5 bg-[#252525] fixed top-0 left-0 z-[100] border-b-[0px] border-b-[#47a3b3] flex justify-between items-center shadow-md`}
+      >
+        <Link to="/" className="mr-auto">
+          <div className="flex items-center gap-[0px] ml-[-10px] cursor-pointer">
+            <img alt="logo" src={logo} className="w-16 h-16" />
+            <p className="font-dyna text-[1.5rem] text-rose-300 tracking-widest">
+              Ripple Note
+            </p>
+          </div>
+        </Link>
+        <img
+          alt="hamburger"
+          src={menu}
+          onClick={openDropdown}
+          className="w-[30px] h-[30px] cursor-pointer"
+        />
+
+        {openMenu && (
+          <div className="w-full h-[100vh] z-[200] bg-black/80 fixed top-0 left-0">
+            <img
+              className="w-[35px] h-[35px] cursor-pointer mr-[25px] absolute top-[30px] right-2"
+              alt=""
+              src={close}
+              onClick={openDropdown}
+            />
+            <div
+              onClick={openDropdown}
+              className="w-[35%] h-screen float-left"
+            ></div>
+            <ul className="slide float-right w-[65%] h-full bg-[#252525] px-[30px] text-[1rem] text-white pt-[100px] text-center">
+              {user && (
+                <li className="w-[fit-content] my-6 mx-auto flex items-center justify-center gap-2 border-2 border-rose-400 px-2 py-1 rounded-lg">
+                  <div className="text-rose-400 font-bold text-[1.25rem]">
+                   User
+                  </div>
+                  <img alt="user" src={userImg} className="w-8 h-8" />
+                </li>
+              )}
+              <li className="my-4">
+                <Link to="/" onClick={hideDropdown}>
+                  <div className="w-full">Home</div>
+                </Link>
+              </li>
+              <li className="my-4">
+                <Link to="/" onClick={hideDropdown}>
+                  <div className="w-full">Notes</div>
+                </Link>
+              </li>
+              <li className="my-4">
+                <Link to="/" onClick={hideDropdown}>
+                  <div className="w-full">Add New</div>
+                </Link>
+              </li>
+              {!user && (
+                <li className="my-4">
+                  <Link to="/" onClick={hideDropdown}>
+                    <div className="w-full">Sign Up</div>
+                  </Link>
+                </li>
+              )}
+              {!user && (
+                <li className="my-4">
+                  <Link to="/" onClick={hideDropdown}>
+                    <div className="w-full">Log In</div>
+                  </Link>
+                </li>
+              )}
+              {user && (
+                <li
+                  onClick={() => {
+                    logout();
+                    hideDropdown();
+                  }}
+                  className="my-4"
+                >
+                  <div className="w-full">Log Out</div>
+                </li>
+              )}
+            </ul>
+          </div>
+        )}
+      </div>
+      {/*mobile header */}
 	</header>
   );
 
