@@ -217,17 +217,17 @@ function App() {
     setNotesDataFromDb(newUserNote);
   }
 
-    //to set hover out state of each sticky note
-    function handleNoteOut(index) {
-      const newNote = [...note];
-      newNote[index].hover = false;
-      setNote(newNote);
-      const newUserNote = [...notesDataFromDb];
-      if (newUserNote) newUserNote[index].hover = false;
-      setNotesDataFromDb(newUserNote);
-    }
+  //to set hover out state of each sticky note
+  function handleNoteOut(index) {
+    const newNote = [...note];
+    newNote[index].hover = false;
+    setNote(newNote);
+    const newUserNote = [...notesDataFromDb];
+    if (newUserNote) newUserNote[index].hover = false;
+    setNotesDataFromDb(newUserNote);
+  }
 
-      //to handle the click state of each sticky note
+  //to handle the click state of each sticky note
   function handleClick(index) {
     const newNote = [...note];
     newNote[index].hover = false;
@@ -237,12 +237,23 @@ function App() {
     setNotesDataFromDb(newUserNote);
   }
 
-    //to show and hide password
-    const [showPassword, setShowPassword] = useState(false);
-    function togglePassword() {
-      setShowPassword((prev) => !prev);
-    }
+  //to show and hide password
+  const [showPassword, setShowPassword] = useState(false);
+  function togglePassword() {
+    setShowPassword((prev) => !prev);
+  }
 
+    //to show and hide welcome message
+    const [welcomeMessage, setWelcomeMessage] = useState(true);
+    function handleHideWelcome() {
+      setWelcomeMessage((prev) => !prev);
+    }
+  
+    //to control create note input
+    const [newNote, setNewNote] = useState({
+      title: "",
+      body: "",
+    });
 
   return (
     <Routes>
