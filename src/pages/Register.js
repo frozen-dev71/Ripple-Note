@@ -44,6 +44,7 @@ const Register = ({
                 id="password"
                 onChange={handleRegChange}
                 placeholder="Password"
+                minlength="6"
                 className="w-full bg-teal-400/20 my-4 p-3 outline-none rounded-lg"
               />
               <img

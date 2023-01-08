@@ -79,7 +79,7 @@ const Header = ({ user, logout, currentUserFromDb, currentPage }) => {
                 onClick={logout}
                 className="bg-teal-500 font-bold text-[0.90rem] px-5 py-1 rounded-md hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300"
               >
-                logout
+                Log Out
               </button>
             </div>
           )}

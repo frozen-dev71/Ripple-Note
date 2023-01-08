@@ -62,7 +62,7 @@ const Main = ({
                 Created notes are organized into neat rows of edittable sticky
                 notes. <br />
                 <br />- Designed and Built by{" "}
-                <span className="text-teal-400">berkbeleli</span>.
+                <span className="text-teal-400">Berk Beleli</span>.
                 <br /> Really, what will you all do without me. you're welcome.
               </p>
               {!user && (
