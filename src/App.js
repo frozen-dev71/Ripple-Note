@@ -7,6 +7,7 @@ import notedata from "./datas/notedatamock.json";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Create from "./pages/Create";
+import Notes from "./pages/Notes";
 
 import { auth, db } from "./firebase/firebase-config";
 import {
@@ -216,7 +217,6 @@ function App() {
     setNotesDataFromDb(newUserNote);
   }
 
-  
   return (
     <Routes>
       <Route
@@ -272,6 +272,29 @@ function App() {
             // newNote={newNote}
             // showModal={showModal}
             // setShowModal={setShowModal}
+          />
+        }
+      />
+
+      <Route
+        path="/notes"
+        element={
+          <Notes
+            user={user}
+            note={note}
+            handleNoteHover={handleNoteHover}
+            // handleNoteOut={handleNoteOut}
+            // handleClick={handleClick}
+            // logout={logout}
+            // currentUserFromDb={currentUserFromDb}
+            // welcomeMessage={welcomeMessage}
+            // handleHideWelcome={handleHideWelcome}
+            waitForUserFromDb={waitForUserFromDb}
+            notesDataFromDb={notesDataFromDb}
+            currentPage={currentPage}
+            globalCoords={globalCoords}
+            handleMouseMove={handleMouseMove}
+            coords={coords}
           />
         }
       />
