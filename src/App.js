@@ -1,6 +1,8 @@
-import {Main} from './components/Main/Main';
+import { Main } from "./components/Main/Main";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+
+import Login from "./pages/Login";
 
 import {
   createUserWithEmailAndPassword,
@@ -17,7 +19,6 @@ function App() {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   const [globalCoords, setGlobalCoords] = useState({ x: 0, y: 0 });
-
 
   const handleMouseMove = (event) => {
     setCoords({
@@ -41,15 +42,14 @@ function App() {
     };
   }, []);
 
+  //to save reg form input
+  const [regForm, setRegForm] = useState({
+    displayName: "",
+    email: "",
+    password: "",
+  });
 
-    //to save reg form input
-    const [regForm, setRegForm] = useState({
-      displayName: "",
-      email: "",
-      password: "",
-    });
-
-      //to handle form input change chnage
+  //to handle form input change chnage
   function handleRegChange(event) {
     const { id, value } = event.target;
     setRegForm((prevState) => {
@@ -67,9 +67,33 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <Main />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Main
+            currentPage={currentPage}
+            globalCoords={globalCoords}
+            handleMouseMove={handleMouseMove}
+            coords={coords}
+          />
+        }
+      />
+
+      <Route
+        path="/login"
+        element={
+          <Login
+          // showPassword={showPassword}
+          // togglePassword={togglePassword}
+          // handleLoginChange={handleLoginChange}
+          // showLoader={showLoader}
+          // login={login}
+          // user={user}
+          />
+        }
+      />
+    </Routes>
   );
 }
 
