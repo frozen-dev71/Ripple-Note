@@ -319,8 +319,14 @@ function App() {
     localStorage.setItem("notesDataFromDb", JSON.stringify(notesDataFromDb));
   }, [notesDataFromDb]);
 
-  
 
+  //to delete note from db
+  const deleteDocument = async (userName, id, title) => {
+    await deleteDoc(
+      doc(db, "notes", `${userName}_${id}_${title.replace(/ /g, "_")}`)
+    );
+    console.log("note deleted");
+  };
 
 
   return (
