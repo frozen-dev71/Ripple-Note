@@ -217,6 +217,27 @@ function App() {
     setNotesDataFromDb(newUserNote);
   }
 
+    //to set hover out state of each sticky note
+    function handleNoteOut(index) {
+      const newNote = [...note];
+      newNote[index].hover = false;
+      setNote(newNote);
+      const newUserNote = [...notesDataFromDb];
+      if (newUserNote) newUserNote[index].hover = false;
+      setNotesDataFromDb(newUserNote);
+    }
+
+      //to handle the click state of each sticky note
+  function handleClick(index) {
+    const newNote = [...note];
+    newNote[index].hover = false;
+    setNote(newNote);
+    const newUserNote = [...notesDataFromDb];
+    if (newUserNote) newUserNote[index].hover = false;
+    setNotesDataFromDb(newUserNote);
+  }
+
+
   return (
     <Routes>
       <Route
