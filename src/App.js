@@ -328,6 +328,47 @@ function App() {
     console.log("note deleted");
   };
 
+    //to handle edit popup show and hide
+    const [showEditpopup, setShowEditpopup] = useState(false);
+    function handleEditPopup(userName, id, title) {
+      setShowEditpopup((prev) => !prev);
+      getDocRef(userName, id, title);
+    }
+    let docRefEdit = [];
+    let docNested;
+
+      //to get note to edit from db
+  const getDocRef = (id) => {
+    docRefEdit.push(
+      notesDataFromDb.filter((item) => {
+        return item.id === id;
+      })
+    );
+    docNested = docRefEdit[0][0];
+    setEditorVal({
+      body: docNested?.body,
+    });
+  };
+  
+//to update doc
+
+const editDocument = async (userName, id, title, body) => {
+  const docRef = doc(
+    db,
+    "notes",
+    `${userName}_${id}_${title.replace(/ /g, "_")}`
+  );
+  await updateDoc(docRef, {
+    body: body,
+  });
+  console.log("note updated!");
+  window.location.reload();
+};
+
+//to control update note input
+const [editorVal, setEditorVal] = useState({
+  body: "test",
+});
 
   return (
     <Routes>
