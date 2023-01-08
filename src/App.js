@@ -13,6 +13,18 @@ import {
   signOut,
 } from "firebase/auth";
 
+import {
+  getDocs,
+  addDoc,
+  collection,
+  query,
+  where,
+  setDoc,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
+
 function App() {
   const location = useLocation();
   let currentPage = location.pathname;
@@ -86,12 +98,35 @@ function App() {
       setUser(currentUser);
     });
   }, []);
-  
+
   //to save current user from db
   const [currentUserFromDb, setCurrentUserFromDb] = useState({});
   const [waitForUserFromDb, setWaitForUserFromDb] = useState(false);
 
+//to get users saved in db
+  useEffect(() => {
+    const getUserDetails = async () => {
+      setWaitForUserFromDb(true);
+      const userQuery = query(
+        collection(db, "users"),
+        where("email", "==", user?.email)
+      );
+      try {
+        const querySnapshot = await getDocs(userQuery);
+        querySnapshot.forEach((doc) => {
+          setCurrentUserFromDb(doc.data());
+        });
+        setWaitForUserFromDb(false);
+      } catch (err) {
+        console.log(err.message);
+        setWaitForUserFromDb(false);
+      }
+    };
+    getUserDetails();
+  }, [user]);
 
+
+  
 
   return (
     <Routes>
