@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Life is either a daring adventure or nothing at all.",
+    "date": "jan 05, 2023",
+    "body": "Make your own note. /n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+    "hover": false
+  },
+  {
+    "id": 2,
+    "title": "In the end, it's not the years in your life that count. It's the life in your years.",
+    "date": "june 16, 2023",
+    "body": "Make your own note.",
+    "hover": false
+  },
+  {
+    "id": 3,
+    "title": "How to make your brand stand out online",
+    "date": "sept 6, 2022",
+    "body": "Make your own note.",
+    "hover": false
+  },
+  {
+    "id": 4,
+    "title": "Never let the fear of striking out keep you from playing the game.",
+    "date": "may 19, 2022",
+    "body": "Make your own note.",
+    "hover": false
+  },
+  {
+    "id": 5,
+    "title": "The only impossible journey is the one you never begin.",
+    "date": "jan 15, 2022",
+    "body": "Make your own note.",
+    "hover": false
+  },
+  {
+    "id": 6,
+    "title": "The purpose of our lives is to be happy.",
+    "date": "dec 18, 2022",
+    "body": "Make your own note.",
+    "hover": false
+  }
+]
