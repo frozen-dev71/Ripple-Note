@@ -2,6 +2,8 @@ import { Main } from "./components/Main/Main";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
+import notedata from "./datas/notedatamock.json";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Create from "./pages/Create";
@@ -191,6 +193,11 @@ function App() {
         navigate("/");
       });
     };
+
+      //to set the default notes in state
+  const [note, setNote] = useState(notedata);
+
+  
 
   return (
     <Routes>
