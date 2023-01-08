@@ -49,7 +49,22 @@ function App() {
       password: "",
     });
 
-    
+      //to handle form input change chnage
+  function handleRegChange(event) {
+    const { id, value } = event.target;
+    setRegForm((prevState) => {
+      return {
+        ...prevState,
+        [id]: value,
+      };
+    });
+  }
+
+  //to save login form input
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
 
   return (
     <div className="App">
