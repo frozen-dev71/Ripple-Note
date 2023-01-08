@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Create from "./pages/Create";
 
 import { auth, db } from "./firebase/firebase-config";
 import {
@@ -80,16 +81,16 @@ function App() {
     password: "",
   });
 
-    //to handle form input change chnage
-    function handleLoginChange(event) {
-      const { id, value } = event.target;
-      setLoginForm((prevState) => {
-        return {
-          ...prevState,
-          [id]: value,
-        };
-      });
-    }
+  //to handle form input change chnage
+  function handleLoginChange(event) {
+    const { id, value } = event.target;
+    setLoginForm((prevState) => {
+      return {
+        ...prevState,
+        [id]: value,
+      };
+    });
+  }
 
   //to save current user from auth in state
   const [user, setUser] = useState({});
@@ -103,7 +104,7 @@ function App() {
   const [currentUserFromDb, setCurrentUserFromDb] = useState({});
   const [waitForUserFromDb, setWaitForUserFromDb] = useState(false);
 
-//to get users saved in db
+  //to get users saved in db
   useEffect(() => {
     const getUserDetails = async () => {
       setWaitForUserFromDb(true);
@@ -128,22 +129,20 @@ function App() {
   const [showLoader, setShowLoader] = useState(false);
   const navigate = useNavigate();
 
-
-    //function to create user doc on sign up
-    const createUserDocument = async (email, name) => {
-      try {
-        const docRef = await addDoc(collection(db, "users"), {
-          email: email,
-          displayName: name,
-          createdAt: new Date(),
-        });
-        alert("fds");
-        console.log("Document written with ID: ", docRef.id);
-      } catch (err) {
-        console.error("Error adding document: ", err);
-      }
-    };
-
+  //function to create user doc on sign up
+  const createUserDocument = async (email, name) => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        email: email,
+        displayName: name,
+        createdAt: new Date(),
+      });
+      alert("fds");
+      console.log("Document written with ID: ", docRef.id);
+    } catch (err) {
+      console.error("Error adding document: ", err);
+    }
+  };
 
   return (
     <Routes>
@@ -173,7 +172,7 @@ function App() {
         }
       />
 
-<Route
+      <Route
         path="/register"
         element={
           <Register
@@ -184,6 +183,22 @@ function App() {
             // register={register}
             // user={user}
             regForm={regForm}
+          />
+        }
+      />
+    <Route
+        path="/create"
+        element={
+          <Create
+            user={user}
+            currentUserFromDb={currentUserFromDb}
+            currentPage={currentPage}
+            // logout={logout}
+            // handleNewNoteChange={handleNewNoteChange}
+            // handleCreate={handleCreate}
+            // newNote={newNote}
+            // showModal={showModal}
+            // setShowModal={setShowModal}
           />
         }
       />
