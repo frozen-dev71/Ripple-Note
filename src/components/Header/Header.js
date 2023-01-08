@@ -5,7 +5,7 @@ import userImg from "../../assets/images/user.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Header = ({ user, logout, currentPage }) => {
+const Header = ({ user, logout, currentUserFromDb, currentPage }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   function openDropdown() {
@@ -72,7 +72,7 @@ const Header = ({ user, logout, currentPage }) => {
           {user && (
             <div className="flex gap-3 items-center">
               <div className="px-5 py-[4px] border-2 border-[#ffab91] rounded-lg flex items-center gap-2">
-                <h2 className="">Hi User</h2>
+                <h2 className="">Hi {currentUserFromDb.displayName}</h2>
                 <img alt="user" src={userImg} className="w-6 h-6" />
               </div>
               <button
@@ -120,7 +120,7 @@ const Header = ({ user, logout, currentPage }) => {
               {user && (
                 <li className="w-[fit-content] my-6 mx-auto flex items-center justify-center gap-2 border-2 border-rose-400 px-2 py-1 rounded-lg">
                   <div className="text-rose-400 font-bold text-[1.25rem]">
-                   User
+                  {currentUserFromDb.displayName}
                   </div>
                   <img alt="user" src={userImg} className="w-8 h-8" />
                 </li>
