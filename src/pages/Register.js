@@ -17,11 +17,11 @@ const Register = ({
       <Header />
       <div className="w-full min-h-[85vh] px-4 my-16 text-white flex items-center justify-center relative">
         <Link to="/" className="absolute top-10 left-2 block sm:hidden">
-          <button className="bg-rose-500/80 font-bold text-[0.90rem] mb-8 px-5 py-1 rounded-md hover:bg-rose-400 hover:translate-y-[6px] transition-all duration-300">
+          <button className="bg-teal-500/80 font-bold text-[0.90rem] mb-8 px-5 py-1 rounded-md hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300">
             Back to home
           </button>
         </Link>
-        <div className="w-full sm:w-[550px] p-5 sm:p-10 rounded-2xl border-2 border-rose-400">
+        <div className="w-full sm:w-[550px] p-5 sm:p-10 rounded-2xl border-2 border-teal-400">
           <h1 className="font-bold text-[1.75rem] text-center">Register</h1>
           <form>
             <input
@@ -29,22 +29,22 @@ const Register = ({
               id="displayName"
               onChange={handleRegChange}
               placeholder="Display Name"
-              className="w-full bg-rose-400/20 my-4 p-3 outline-none rounded-lg"
+              className="w-full bg-teal-400/20 my-4 p-3 outline-none rounded-lg"
             />
             <input
               type="email"
               id="email"
               onChange={handleRegChange}
-              placeholder="email"
-              className="w-full bg-rose-400/20 my-4 p-3 outline-none rounded-lg"
+              placeholder="Email"
+              className="w-full bg-teal-400/20 my-4 p-3 outline-none rounded-lg"
             />
             <div className="w-full relative">
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 onChange={handleRegChange}
-                placeholder="password"
-                className="w-full bg-rose-400/20 my-4 p-3 outline-none rounded-lg"
+                placeholder="Password"
+                className="w-full bg-teal-400/20 my-4 p-3 outline-none rounded-lg"
               />
               <img
                 alt="reveal"
@@ -55,13 +55,13 @@ const Register = ({
             </div>
             <button
               onClick={register}
-              className="w-full bg-rose-400 my-4 p-3 outline-none rounded-lg"
+              className="w-full bg-teal-400 my-4 p-3 outline-none rounded-lg"
             >
               Register
             </button>
             <p>
               Have an account already?{" "}
-              <Link to="/login" className="text-rose-400">
+              <Link to="/login" className="text-teal-400">
                 Login
               </Link>
             </p>
