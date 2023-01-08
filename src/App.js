@@ -255,6 +255,18 @@ function App() {
       body: "",
     });
 
+
+  //to handle form input change chnage
+  function handleNewNoteChange(event) {
+    const { id, value } = event.target;
+    setNewNote((prevState) => {
+      return {
+        ...prevState,
+        [id]: value,
+      };
+    });
+  }
+
   return (
     <Routes>
       <Route
