@@ -146,28 +146,28 @@ function App() {
     }
   };
 
-    //to handle reg form data submit to firebase
-    const register = async (e) => {
-      e.preventDefault();
-      setShowLoader(true);
-  
-      try {
-        await createUserWithEmailAndPassword(
-          auth,
-          regForm.email,
-          regForm.password
-        );
-        setShowLoader(false);
-        navigate("/notes");
-        await createUserDocument(regForm.email, regForm.displayName);
-      } catch (error) {
-        setShowLoader(false);
-        console.log(error.message);
-        alert("USER ALREADY EXISTS!!");
-      }
-    };
+  //to handle reg form data submit to firebase
+  const register = async (e) => {
+    e.preventDefault();
+    setShowLoader(true);
 
-      //to log in users
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        regForm.email,
+        regForm.password
+      );
+      setShowLoader(false);
+      navigate("/notes");
+      await createUserDocument(regForm.email, regForm.displayName);
+    } catch (error) {
+      setShowLoader(false);
+      console.log(error.message);
+      alert("USER ALREADY EXISTS!!");
+    }
+  };
+
+  //to log in users
   const login = async (e) => {
     e.preventDefault();
     setShowLoader(true);
@@ -187,17 +187,34 @@ function App() {
     }
   };
 
-    //to log out users
-    const logout = async () => {
-      signOut(auth).then(() => {
-        navigate("/");
-      });
-    };
+  //to log out users
+  const logout = async () => {
+    signOut(auth).then(() => {
+      navigate("/");
+    });
+  };
 
-      //to set the default notes in state
+  //to set the default notes in state
   const [note, setNote] = useState(notedata);
 
-  
+  const [notesDataFromDb, setNotesDataFromDb] = useState(
+    JSON.parse(localStorage.getItem("notesDataFromDb")) || []
+  );
+  const [allNotesFromDb, setAllNotesFromDb] = useState(
+    JSON.parse(localStorage.getItem("allNotesDataFromDb")) || []
+  );
+  // console.log(notesDataFromDb);
+  const [updateNotes, setUpdateNotes] = useState(false);
+
+  //to set hover state of each sticky note
+  function handleNoteHover(index) {
+    const newNote = [...note];
+    newNote[index].hover = true;
+    setNote(newNote);
+    const newUserNote = [...notesDataFromDb];
+    newUserNote[index].hover = true;
+    setNotesDataFromDb(newUserNote);
+  }
 
   return (
     <Routes>
@@ -241,7 +258,7 @@ function App() {
           />
         }
       />
-    <Route
+      <Route
         path="/create"
         element={
           <Create
@@ -257,7 +274,6 @@ function App() {
           />
         }
       />
-
     </Routes>
   );
 }
