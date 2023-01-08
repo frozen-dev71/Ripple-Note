@@ -66,21 +66,21 @@ const Main = ({
                 <br /> Really, what will you all do without me. you're welcome.
               </p>
               {!user && (
-                <Link to="/">
+                <Link to="/register">
                   <button className="bg-teal-500 text-[0.90rem] mt-8 sm:mt-12 px-5 py-2 rounded-sm hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300">
                     Sign Up to get started
                   </button>
                 </Link>
               )}
               {user && (
-                <Link to="/">
+                <Link to="/create">
                   <button className="bg-teal-500 text-[0.90rem] mt-8 sm:mt-12 px-5 py-2 rounded-sm hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300">
                     Create new note
                   </button>
                 </Link>
               )}
             </div>
-            <Link to="/">
+            <Link to="/create">
               <div className="w-12 h-12 sm:w-[70px] sm:h-[70px] leading-none pt-1 text-[40px] flex justify-center items-center rounded-full cursor-pointer bg-teal-500 hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300 fixed right-8 bottom-8">
                 +
               </div>
