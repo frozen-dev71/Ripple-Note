@@ -67,6 +67,19 @@ function App() {
     password: "",
   });
 
+    //to handle form input change chnage
+    function handleLoginChange(event) {
+      const { id, value } = event.target;
+      setLoginForm((prevState) => {
+        return {
+          ...prevState,
+          [id]: value,
+        };
+      });
+    }
+
+    
+
   return (
     <Routes>
       <Route
