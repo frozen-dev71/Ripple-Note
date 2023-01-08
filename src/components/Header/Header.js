@@ -131,25 +131,25 @@ const Header = ({ user, logout, currentUserFromDb, currentPage }) => {
                 </Link>
               </li>
               <li className="my-4">
-                <Link to="/" onClick={hideDropdown}>
+                <Link to="/notes" onClick={hideDropdown}>
                   <div className="w-full">Notes</div>
                 </Link>
               </li>
               <li className="my-4">
-                <Link to="/" onClick={hideDropdown}>
+                <Link to="/create" onClick={hideDropdown}>
                   <div className="w-full">Add New</div>
                 </Link>
               </li>
               {!user && (
                 <li className="my-4">
-                  <Link to="/" onClick={hideDropdown}>
+                  <Link to="/register" onClick={hideDropdown}>
                     <div className="w-full">Sign Up</div>
                   </Link>
                 </li>
               )}
               {!user && (
                 <li className="my-4">
-                  <Link to="/" onClick={hideDropdown}>
+                  <Link to="/login" onClick={hideDropdown}>
                     <div className="w-full">Log In</div>
                   </Link>
                 </li>

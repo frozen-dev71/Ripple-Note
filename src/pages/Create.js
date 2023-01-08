@@ -1,7 +1,7 @@
 import ScrollToTop from "../helpers/ScrollToTop";
 import Header from "../components/Header/Header";
 import { Link } from "react-router-dom";
-import ModalCreate from "../components/ModalCreate";
+import ModalCreate from "../components/ModelCreate";
 
 const Create = ({
   user,

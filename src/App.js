@@ -1,4 +1,4 @@
-import { Main } from "./components/Main/Main";
+import Main from "./components/Main/Main";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
@@ -9,6 +9,8 @@ import Register from "./pages/Register";
 import Create from "./pages/Create";
 import Notes from "./pages/Notes";
 import Detail from "./pages/Detail";
+
+import "./output.css";
 
 import { auth, db } from "./firebase/firebase-config";
 import {

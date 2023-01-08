@@ -8,7 +8,7 @@ module.exports = {
 		  dyna: "'DynaPuff', cursive",
 		},
 		backgroundImage: {
-		  home: "url('./src/assets/images/background.jpeg')",
+		  home: "url('./assets/images/background.jpeg')",
 		},
 	  },
 	},
