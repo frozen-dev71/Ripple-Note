@@ -243,18 +243,17 @@ function App() {
     setShowPassword((prev) => !prev);
   }
 
-    //to show and hide welcome message
-    const [welcomeMessage, setWelcomeMessage] = useState(true);
-    function handleHideWelcome() {
-      setWelcomeMessage((prev) => !prev);
-    }
-  
-    //to control create note input
-    const [newNote, setNewNote] = useState({
-      title: "",
-      body: "",
-    });
+  //to show and hide welcome message
+  const [welcomeMessage, setWelcomeMessage] = useState(true);
+  function handleHideWelcome() {
+    setWelcomeMessage((prev) => !prev);
+  }
 
+  //to control create note input
+  const [newNote, setNewNote] = useState({
+    title: "",
+    body: "",
+  });
 
   //to handle form input change chnage
   function handleNewNoteChange(event) {
@@ -267,18 +266,53 @@ function App() {
     });
   }
 
-    //to formate date
-    const date = new Date();
-    const formattedDate = date
-      .toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      })
-      .replace(/ /g, "-");
+  //to formate date
+  const date = new Date();
+  const formattedDate = date
+    .toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    })
+    .replace(/ /g, "-");
+
+  //to send created notes to db
+  const createNoteDocument = async (title, body) => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "notes"));
+      let notes = [];
+      querySnapshot.forEach((doc) => {
+        notes.push(doc.data());
+      });
+      setAllNotesFromDb(notes);
+
+      await setDoc(
+        doc(
+          db,
+          "notes",
+          `${currentUserFromDb?.displayName}_${title.replace(/ /g, "_")}0${
+            notesDataFromDb.length + 1
+          }_${title.replace(/ /g, "_")}`
+        ),
+        {
+          id: `${title.replace(/ /g, "_")}0${notesDataFromDb.length + 1}`,
+          owner: currentUserFromDb?.email,
+          title: title,
+          body: body,
+          createdAt: formattedDate,
+          hover: false,
+        }
+      );
+      console.log("Note created");
+      setUpdateNotes((prev) => !prev);
+      window.location.reload();
+    } catch (err) {
+      console.error("Error creating note: ", err);
+    }
+  };
 
 
-      
+  
 
   return (
     <Routes>
