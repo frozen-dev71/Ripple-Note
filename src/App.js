@@ -388,6 +388,24 @@ function handleDelete(user, id, title) {
   setUpdateNotes((prev) => !prev);
 }
 
+//to create new sticky note
+function handleCreate(event) {
+  event.preventDefault();
+  if (!newNote) {
+    return;
+  }
+
+  createNoteDocument(newNote.title, newNote.body);
+  navigate("/notes");
+}
+
+//to edit sticky note
+function handleEdit(userName, id, title, body) {
+  editDocument(userName, id, title, body);
+  setShowEditpopup((prev) => !prev);
+}
+
+
 
   return (
     <Routes>
