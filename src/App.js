@@ -41,7 +41,15 @@ function App() {
     };
   }, []);
 
-  
+
+    //to save reg form input
+    const [regForm, setRegForm] = useState({
+      displayName: "",
+      email: "",
+      password: "",
+    });
+
+    
 
   return (
     <div className="App">
