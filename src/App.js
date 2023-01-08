@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Create from "./pages/Create";
 import Notes from "./pages/Notes";
+import Detail from "./pages/Detail";
 
 import { auth, db } from "./firebase/firebase-config";
 import {
@@ -319,7 +320,6 @@ function App() {
     localStorage.setItem("notesDataFromDb", JSON.stringify(notesDataFromDb));
   }, [notesDataFromDb]);
 
-
   //to delete note from db
   const deleteDocument = async (userName, id, title) => {
     await deleteDoc(
@@ -328,16 +328,16 @@ function App() {
     console.log("note deleted");
   };
 
-    //to handle edit popup show and hide
-    const [showEditpopup, setShowEditpopup] = useState(false);
-    function handleEditPopup(userName, id, title) {
-      setShowEditpopup((prev) => !prev);
-      getDocRef(userName, id, title);
-    }
-    let docRefEdit = [];
-    let docNested;
+  //to handle edit popup show and hide
+  const [showEditpopup, setShowEditpopup] = useState(false);
+  function handleEditPopup(userName, id, title) {
+    setShowEditpopup((prev) => !prev);
+    getDocRef(userName, id, title);
+  }
+  let docRefEdit = [];
+  let docNested;
 
-      //to get note to edit from db
+  //to get note to edit from db
   const getDocRef = (id) => {
     docRefEdit.push(
       notesDataFromDb.filter((item) => {
@@ -350,61 +350,60 @@ function App() {
     });
   };
 
-//to update doc
+  //to update doc
 
-const editDocument = async (userName, id, title, body) => {
-  const docRef = doc(
-    db,
-    "notes",
-    `${userName}_${id}_${title.replace(/ /g, "_")}`
-  );
-  await updateDoc(docRef, {
-    body: body,
+  const editDocument = async (userName, id, title, body) => {
+    const docRef = doc(
+      db,
+      "notes",
+      `${userName}_${id}_${title.replace(/ /g, "_")}`
+    );
+    await updateDoc(docRef, {
+      body: body,
+    });
+    console.log("note updated!");
+    window.location.reload();
+  };
+
+  //to control update note input
+  const [editorVal, setEditorVal] = useState({
+    body: "test",
   });
-  console.log("note updated!");
-  window.location.reload();
-};
 
-//to control update note input
-const [editorVal, setEditorVal] = useState({
-  body: "test",
-});
-
-//to handle form input change chnage
-function handleUpdateNoteChange(event) {
-  const { id, value } = event.target;
-  setEditorVal((prevState) => {
-    return {
-      ...prevState,
-      [id]: value,
-    };
-  });
-}
-
-//to delete sticky note
-function handleDelete(user, id, title) {
-  deleteDocument(user, id, title);
-  navigate("/notes");
-  setUpdateNotes((prev) => !prev);
-}
-
-//to create new sticky note
-function handleCreate(event) {
-  event.preventDefault();
-  if (!newNote) {
-    return;
+  //to handle form input change chnage
+  function handleUpdateNoteChange(event) {
+    const { id, value } = event.target;
+    setEditorVal((prevState) => {
+      return {
+        ...prevState,
+        [id]: value,
+      };
+    });
   }
 
-  createNoteDocument(newNote.title, newNote.body);
-  navigate("/notes");
-}
+  //to delete sticky note
+  function handleDelete(user, id, title) {
+    deleteDocument(user, id, title);
+    navigate("/notes");
+    setUpdateNotes((prev) => !prev);
+  }
 
-//to edit sticky note
-function handleEdit(userName, id, title, body) {
-  editDocument(userName, id, title, body);
-  setShowEditpopup((prev) => !prev);
-}
+  //to create new sticky note
+  function handleCreate(event) {
+    event.preventDefault();
+    if (!newNote) {
+      return;
+    }
 
+    createNoteDocument(newNote.title, newNote.body);
+    navigate("/notes");
+  }
+
+  //to edit sticky note
+  function handleEdit(userName, id, title, body) {
+    editDocument(userName, id, title, body);
+    setShowEditpopup((prev) => !prev);
+  }
 
   //to get notes data from db
   useEffect(() => {
@@ -431,12 +430,19 @@ function handleEdit(userName, id, title, body) {
     getNotes();
   }, [user, updateNotes]);
 
+  //to show modal in 3 seconds
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Routes>
       <Route
         path="/"
         element={
           <Main
+            user={user}
+            logout={logout}
+            currentUserFromDb={currentUserFromDb}
+            waitForUserFromDb={waitForUserFromDb}
             currentPage={currentPage}
             globalCoords={globalCoords}
             handleMouseMove={handleMouseMove}
@@ -449,12 +455,12 @@ function handleEdit(userName, id, title, body) {
         path="/login"
         element={
           <Login
-          // showPassword={showPassword}
-          // togglePassword={togglePassword}
-          // handleLoginChange={handleLoginChange}
-          // showLoader={showLoader}
-          // login={login}
-          // user={user}
+            showPassword={showPassword}
+            togglePassword={togglePassword}
+            handleLoginChange={handleLoginChange}
+            showLoader={showLoader}
+            login={login}
+            user={user}
           />
         }
       />
@@ -463,12 +469,12 @@ function handleEdit(userName, id, title, body) {
         path="/register"
         element={
           <Register
-            // showPassword={showPassword}
-            // togglePassword={togglePassword}
-            // handleRegChange={handleRegChange}
-            // showLoader={showLoader}
-            // register={register}
-            // user={user}
+            showPassword={showPassword}
+            togglePassword={togglePassword}
+            handleRegChange={handleRegChange}
+            showLoader={showLoader}
+            register={register}
+            user={user}
             regForm={regForm}
           />
         }
@@ -480,12 +486,12 @@ function handleEdit(userName, id, title, body) {
             user={user}
             currentUserFromDb={currentUserFromDb}
             currentPage={currentPage}
-            // logout={logout}
-            // handleNewNoteChange={handleNewNoteChange}
-            // handleCreate={handleCreate}
-            // newNote={newNote}
-            // showModal={showModal}
-            // setShowModal={setShowModal}
+            logout={logout}
+            handleNewNoteChange={handleNewNoteChange}
+            handleCreate={handleCreate}
+            newNote={newNote}
+            showModal={showModal}
+            setShowModal={setShowModal}
           />
         }
       />
@@ -497,18 +503,37 @@ function handleEdit(userName, id, title, body) {
             user={user}
             note={note}
             handleNoteHover={handleNoteHover}
-            // handleNoteOut={handleNoteOut}
-            // handleClick={handleClick}
-            // logout={logout}
-            // currentUserFromDb={currentUserFromDb}
-            // welcomeMessage={welcomeMessage}
-            // handleHideWelcome={handleHideWelcome}
+            handleNoteOut={handleNoteOut}
+            handleClick={handleClick}
+            logout={logout}
+            currentUserFromDb={currentUserFromDb}
+            welcomeMessage={welcomeMessage}
+            handleHideWelcome={handleHideWelcome}
             waitForUserFromDb={waitForUserFromDb}
             notesDataFromDb={notesDataFromDb}
             currentPage={currentPage}
             globalCoords={globalCoords}
             handleMouseMove={handleMouseMove}
             coords={coords}
+          />
+        }
+      />
+      <Route
+        path="/note/:id"
+        element={
+          <Detail
+            note={note}
+            user={user}
+            currentUserFromDb={currentUserFromDb}
+            logout={logout}
+            notesDataFromDb={notesDataFromDb}
+            handleDelete={handleDelete}
+            editorVal={editorVal}
+            showEditpopup={showEditpopup}
+            handleEditPopup={handleEditPopup}
+            handleUpdateNoteChange={handleUpdateNoteChange}
+            waitForUserFromDb={waitForUserFromDb}
+            handleEdit={handleEdit}
           />
         }
       />

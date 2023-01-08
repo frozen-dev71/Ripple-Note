@@ -1,6 +1,6 @@
 import Header from "../components/Header/Header";
 import { Link } from "react-router-dom";
-import eye from "../images/eye.png";
+import eye from "../assets/images/eye.png";
 import ScrollToTop from "../helpers/ScrollToTop";
 import Loader from "../components/Loader";
 
