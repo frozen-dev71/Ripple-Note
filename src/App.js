@@ -129,7 +129,20 @@ function App() {
   const navigate = useNavigate();
 
 
-  
+    //function to create user doc on sign up
+    const createUserDocument = async (email, name) => {
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          email: email,
+          displayName: name,
+          createdAt: new Date(),
+        });
+        alert("fds");
+        console.log("Document written with ID: ", docRef.id);
+      } catch (err) {
+        console.error("Error adding document: ", err);
+      }
+    };
 
 
   return (
