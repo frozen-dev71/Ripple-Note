@@ -406,6 +406,30 @@ function handleEdit(userName, id, title, body) {
 }
 
 
+  //to get notes data from db
+  useEffect(() => {
+    const getNotes = async () => {
+      const userQuery = query(
+        collection(db, "notes"),
+        where("owner", "==", user?.email)
+      );
+      try {
+        const querySnapshot = await getDocs(userQuery);
+        let notes = [];
+        querySnapshot.forEach((doc) => {
+          notes.push(doc.data());
+        });
+
+        let arranged = notes.sort(function (a, b) {
+          return b.id.slice(-2) - a.id.slice(-2);
+        });
+        setNotesDataFromDb(arranged);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getNotes();
+  }, [user, updateNotes]);
 
   return (
     <Routes>
