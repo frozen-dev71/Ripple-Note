@@ -86,8 +86,11 @@ function App() {
       setUser(currentUser);
     });
   }, []);
-
   
+  //to save current user from db
+  const [currentUserFromDb, setCurrentUserFromDb] = useState({});
+  const [waitForUserFromDb, setWaitForUserFromDb] = useState(false);
+
 
 
   return (
