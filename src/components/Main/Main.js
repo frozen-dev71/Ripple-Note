@@ -42,6 +42,66 @@ const Main = ({
               </p>
             </div>
           )}
+		   <div className="block sm:flex items-center">
+            <div className="w-full sm:w-1/2 sm:mr-auto mb-10 sm:mb-0">
+              <img alt="" src={hero} className="w-[70%] mx-auto h-auto swing" />
+            </div>
+            <div className="w-full sm:w-[50%] text-center relative">
+              <div className="relative">
+                <img
+                  alt=""
+                  src={crown}
+                  className="w-[80px] h-[80px] hidden sm:block absolute left-[-5%] top-[-40px]"
+                />
+                <h1 className="text-[1.75rem] sm:text-[2.5rem] font-bold mb-5 sm:mb-[30px]">
+                  Create & save your sticky notes for free!
+                </h1>
+              </div>
+              <p className="tracking-wider">
+                Keeping track of your notes just got a lot easier! Create,
+                organise, and store your notes with this easy-to-use free tool.
+                Created notes are organized into neat rows of edittable sticky
+                notes. <br />
+                <br />- Designed and Built by{" "}
+                <span className="text-teal-400">berkbeleli</span>.
+                <br /> Really, what will you all do without me. you're welcome.
+              </p>
+              {!user && (
+                <Link to="/">
+                  <button className="bg-teal-500 text-[0.90rem] mt-8 sm:mt-12 px-5 py-2 rounded-sm hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300">
+                    Sign Up to get started
+                  </button>
+                </Link>
+              )}
+              {user && (
+                <Link to="/">
+                  <button className="bg-teal-500 text-[0.90rem] mt-8 sm:mt-12 px-5 py-2 rounded-sm hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300">
+                    Create new note
+                  </button>
+                </Link>
+              )}
+            </div>
+            <Link to="/">
+              <div className="w-12 h-12 sm:w-[70px] sm:h-[70px] leading-none pt-1 text-[40px] flex justify-center items-center rounded-full cursor-pointer bg-teal-500 hover:bg-teal-400 hover:translate-y-[6px] transition-all duration-300 fixed right-8 bottom-8">
+                +
+              </div>
+            </Link>
+          </div>
+          <div
+            style={style}
+            className={`w-[150px] h-[75px] fixed z-[999] grid grid-cols-4 gap-1 hold`}
+            id="cursor"
+          >
+            <div className="rounded-full bg-teal-400 tile1"></div>
+            <div className="rounded-full bg-[#ffab91] tile2"></div>
+            <div className="rounded-full bg-[#e7ed9b] tile3"></div>
+            <div className="rounded-full bg-[#cf94da] tile4"></div>
+
+            <div className="rounded-full bg-emerald-400 tile5"></div>
+            <div className="rounded-full bg-yellow-300 tile6"></div>
+            <div className="rounded-full bg-slate-400 tile7"></div>
+            <div className="rounded-full bg-red-600 tile8"></div>
+          </div>
         </section>
       </main>
     </>
