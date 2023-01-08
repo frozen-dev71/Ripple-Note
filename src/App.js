@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+import { auth, db } from "./firebase/firebase-config";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -78,7 +79,16 @@ function App() {
       });
     }
 
-    
+  //to save current user from auth in state
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
+
+  
+
 
   return (
     <Routes>
