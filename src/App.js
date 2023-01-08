@@ -319,6 +319,8 @@ function App() {
     localStorage.setItem("notesDataFromDb", JSON.stringify(notesDataFromDb));
   }, [notesDataFromDb]);
 
+  
+
 
 
   return (
