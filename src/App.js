@@ -349,7 +349,7 @@ function App() {
       body: docNested?.body,
     });
   };
-  
+
 //to update doc
 
 const editDocument = async (userName, id, title, body) => {
@@ -369,6 +369,25 @@ const editDocument = async (userName, id, title, body) => {
 const [editorVal, setEditorVal] = useState({
   body: "test",
 });
+
+//to handle form input change chnage
+function handleUpdateNoteChange(event) {
+  const { id, value } = event.target;
+  setEditorVal((prevState) => {
+    return {
+      ...prevState,
+      [id]: value,
+    };
+  });
+}
+
+//to delete sticky note
+function handleDelete(user, id, title) {
+  deleteDocument(user, id, title);
+  navigate("/notes");
+  setUpdateNotes((prev) => !prev);
+}
+
 
   return (
     <Routes>
