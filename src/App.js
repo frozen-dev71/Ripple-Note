@@ -237,6 +237,12 @@ function App() {
     setNotesDataFromDb(newUserNote);
   }
 
+    //to show and hide password
+    const [showPassword, setShowPassword] = useState(false);
+    function togglePassword() {
+      setShowPassword((prev) => !prev);
+    }
+
 
   return (
     <Routes>
