@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 import {
   createUserWithEmailAndPassword,
@@ -93,6 +94,22 @@ function App() {
           />
         }
       />
+
+<Route
+        path="/register"
+        element={
+          <Register
+            // showPassword={showPassword}
+            // togglePassword={togglePassword}
+            // handleRegChange={handleRegChange}
+            // showLoader={showLoader}
+            // register={register}
+            // user={user}
+            regForm={regForm}
+          />
+        }
+      />
+
     </Routes>
   );
 }
