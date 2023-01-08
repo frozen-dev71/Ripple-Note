@@ -144,6 +144,27 @@ function App() {
     }
   };
 
+    //to handle reg form data submit to firebase
+    const register = async (e) => {
+      e.preventDefault();
+      setShowLoader(true);
+  
+      try {
+        await createUserWithEmailAndPassword(
+          auth,
+          regForm.email,
+          regForm.password
+        );
+        setShowLoader(false);
+        navigate("/notes");
+        await createUserDocument(regForm.email, regForm.displayName);
+      } catch (error) {
+        setShowLoader(false);
+        console.log(error.message);
+        alert("Oh good lord! USER ALREADY EXISTS!!");
+      }
+    };
+
   return (
     <Routes>
       <Route
