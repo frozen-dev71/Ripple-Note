@@ -311,8 +311,15 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    localStorage.setItem("allNotesDataFromDb", JSON.stringify(allNotesFromDb));
+  }, [allNotesFromDb]);
 
-  
+  useEffect(() => {
+    localStorage.setItem("notesDataFromDb", JSON.stringify(notesDataFromDb));
+  }, [notesDataFromDb]);
+
+
 
   return (
     <Routes>
