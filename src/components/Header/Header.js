@@ -58,7 +58,7 @@ const Header = ({ user, logout, currentUserFromDb, currentPage }) => {
           {!user && (
             <div className="flex">
               <Link to="/login">
-                <button className="bg-[#ffab91] font-bold text-[0.90rem] mr-5 px-5 py-1 rounded-md hover:bg-teal-500 hover:translate-y-[6px] transition-all duration-300">
+                <button className="bg-[#5EC2B7] font-bold text-[0.90rem] mr-5 px-5 py-1 rounded-md hover:bg-teal-500 hover:translate-y-[6px] transition-all duration-300">
                   Sign In
                 </button>
               </Link>
@@ -71,7 +71,7 @@ const Header = ({ user, logout, currentUserFromDb, currentPage }) => {
           )}
           {user && (
             <div className="flex gap-3 items-center">
-              <div className="px-5 py-[4px] border-2 border-[#ffab91] rounded-lg flex items-center gap-2">
+              <div className="px-5 py-[4px] border-2 border-[#5EC2B7] rounded-lg flex items-center gap-2">
                 <h2 className="">Hi {currentUserFromDb.displayName}</h2>
                 <img alt="user" src={userImg} className="w-6 h-6" />
               </div>

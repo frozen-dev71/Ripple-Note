@@ -66,14 +66,14 @@ const Detail = ({
               </div>
               <div>
                 {!user && (
-                  <h2 className="text-[1rem] mt-5 text-[#ffab91]">
-                    <span className="text-[#ffab91]">Created :</span>{" "}
+                  <h2 className="text-[1rem] mt-5 text-[#5EC2B7]">
+                    <span className="text-[#5EC2B7]">Created :</span>{" "}
                     {eachNote?.date}
                   </h2>
                 )}
                 {user && (
-                  <h2 className="text-[1rem] mt-5 text-[#ffab91]">
-                    <span className="text-[#ffab91]">Created :</span>{" "}
+                  <h2 className="text-[1rem] mt-5 text-[#5EC2B7]">
+                    <span className="text-[#5EC2B7]">Created :</span>{" "}
                     {eachUserNote?.createdAt}
                   </h2>
                 )}
@@ -81,14 +81,14 @@ const Detail = ({
             </div>
 
             <form>
-              <div className="w-full p-5 sm:p-8 mt-6 sm:mt-16 border-2 border-[#ffab91] rounded-lg">
+              <div className="w-full p-5 sm:p-8 mt-6 sm:mt-16 border-2 border-[#5EC2B7] rounded-lg">
                 <p className="text-[1.25rem]">Body here</p>
                 <textarea
                   type="text"
                   id="body"
                   onChange={handleUpdateNoteChange}
                   value={editorVal.body}
-                  className="w-full h-[180px] bg-[#ffab91]/20 text-[1rem] sm:text-[1.5rem] my-4 p-3 outline-none rounded-lg"
+                  className="w-full h-[180px] bg-[#5EC2B7]/20 text-[1rem] sm:text-[1.5rem] my-4 p-3 outline-none rounded-lg"
                   required
                 />
               </div>
@@ -119,7 +119,7 @@ const Detail = ({
           <div className="flex gap-4 justify-between items-center">
             <button
               onClick={() => handleEditPopup(id)}
-              className="bg-inherit font-bold text-[0.90rem] mb-8 p-4 sm:p-5 rounded-full border-2 border-[#ffab91] hover:bg-[#ffab91]/50 hover:translate-y-[6px] transition-all duration-300"
+              className="bg-inherit font-bold text-[0.90rem] mb-8 p-4 sm:p-5 rounded-full border-2 border-[#5EC2B7] hover:bg-[#5EC2B7]/50 hover:translate-y-[6px] transition-all duration-300"
             >
               <img alt="edit" src={pencil} className="w-6 sm:w-8 h-6 sm:h-8" />
             </button>
@@ -152,20 +152,20 @@ const Detail = ({
           </div>
           <div>
             {!user && (
-              <h2 className="text-[1rem] mt-5 text-[#ffab91]">
-                <span className="text-[#ffab91]">Created :</span>{" "}
+              <h2 className="text-[1rem] mt-5 text-[#5EC2B7]">
+                <span className="text-[#5EC2B7]">Created :</span>{" "}
                 {eachNote?.date}
               </h2>
             )}
             {user && (
-              <h2 className="text-[1rem] mt-5 text-[#ffab91]">
-                <span className="text-[#ffab91]">Created :</span>{" "}
+              <h2 className="text-[1rem] mt-5 text-[#5EC2B7]">
+                <span className="text-[#5EC2B7]">Created :</span>{" "}
                 {eachUserNote?.createdAt}
               </h2>
             )}
           </div>
         </div>
-        <div className="w-full min-h-[200px] p-5 sm:p-8 mt-16 border-2 border-[#ffab91] rounded-lg">
+        <div className="w-full min-h-[200px] p-5 sm:p-8 mt-16 border-2 border-[#5EC2B7] rounded-lg">
           {!user && <p className="text-[1.25rem]">{eachNote?.body}</p>}
           {user && <p className="text-[1.25rem]">{eachUserNote?.body}</p>}
         </div>

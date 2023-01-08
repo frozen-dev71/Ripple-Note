@@ -42,7 +42,7 @@ const Notes = ({
         {!waitForUserFromDb && !user && <Loader />}
         {waitForUserFromDb && user && <Loader />}
         {welcomeMessage && (
-          <div className="w-full px-5 py-3 sm:p-5 mt-4 mb-6 sm:mb-16 border-2 border-[#ffab91] rounded-lg relative">
+          <div className="w-full px-5 py-3 sm:p-5 mt-4 mb-6 sm:mb-16 border-2 border-[#5EC2B7] rounded-lg relative">
             <p className="text-[1rem] sm:text-[1.25rem]">
               Hi {currentUserFromDb?.displayName}, welcome to your library.
             </p>
@@ -68,7 +68,7 @@ const Notes = ({
                     onMouseOver={() => handleNoteHover(index)}
                     onMouseOut={() => handleNoteOut(index)}
                     onClick={() => handleClick(index)}
-                    className="p-4 sm:p-6 bg-teal-400 cursor-pointer even:bg-[#ffab91] first:bg-[#e7ed9b] last:bg-[#cf94da] first:row-span-2 rounded-lg relative"
+                    className="p-4 sm:p-6 bg-teal-400 cursor-pointer even:bg-[#5EC2B7] first:bg-[#e7ed9b] last:bg-[#cf94da] first:row-span-2 rounded-lg relative"
                   >
                     <Link to={`/note/${item.id}`}>
                       <div className="overlay w-full h-full absolute top-0 left-0"></div>
@@ -113,7 +113,7 @@ const Notes = ({
                   onMouseOver={() => handleNoteHover(index)}
                   onMouseOut={() => handleNoteOut(index)}
                   onClick={() => handleClick(index)}
-                  className="p-4 sm:p-6 bg-teal-400 cursor-pointer even:bg-[#ffab91] first:bg-[#e7ed9b] last:bg-[#cf94da] first:row-span-2 rounded-lg relative"
+                  className="p-4 sm:p-6 bg-teal-400 cursor-pointer even:bg-[#5EC2B7] first:bg-[#e7ed9b] last:bg-[#cf94da] first:row-span-2 rounded-lg relative"
                 >
                   <Link to={`/note/${item.id}`}>
                     <div className="overlay w-full h-full absolute top-0 left-0"></div>
@@ -144,7 +144,7 @@ const Notes = ({
           id="cursor"
         >
           <div className="rounded-full bg-teal-400 tile1"></div>
-          <div className="rounded-full bg-[#ffab91] tile2"></div>
+          <div className="rounded-full bg-[#5EC2B7] tile2"></div>
           <div className="rounded-full bg-[#e7ed9b] tile3"></div>
           <div className="rounded-full bg-[#cf94da] tile4"></div>
 

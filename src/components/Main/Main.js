@@ -35,7 +35,7 @@ const Main = ({
           {!waitForUserFromDb && !user && <Loader />}
           {waitForUserFromDb && user && <Loader />}
           {user && (
-            <div className="w-[fit-content] px-5 py-2 sm:p-5 mb-4 sm:mb-16 border-2 border-[#ffab91] rounded-lg relative">
+            <div className="w-[fit-content] px-5 py-2 sm:p-5 mb-4 sm:mb-16 border-2 border-[#5EC2B7] rounded-lg relative">
               <p className="text-[0.85rem] sm:text-[1rem]">
                 Logged in, {currentUserFromDb?.displayName}.
               </p>
@@ -92,7 +92,7 @@ const Main = ({
             id="cursor"
           >
             <div className="rounded-full bg-teal-400 tile1"></div>
-            <div className="rounded-full bg-[#ffab91] tile2"></div>
+            <div className="rounded-full bg-[#5EC2B7] tile2"></div>
             <div className="rounded-full bg-[#e7ed9b] tile3"></div>
             <div className="rounded-full bg-[#cf94da] tile4"></div>
 

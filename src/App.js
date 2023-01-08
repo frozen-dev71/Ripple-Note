@@ -143,7 +143,6 @@ function App() {
         displayName: name,
         createdAt: new Date(),
       });
-      alert("fds");
       console.log("Document written with ID: ", docRef.id);
     } catch (err) {
       console.error("Error adding document: ", err);
@@ -540,7 +539,7 @@ function App() {
         }
       />
 
-      
+
     </Routes>
   );
 }

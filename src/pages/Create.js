@@ -48,19 +48,19 @@ const Create = ({
               className="w-full bg-teal-400/20 text-[1.25rem] sm:text-[1.5rem] my-4 p-3 outline-none rounded-lg"
               required
             />
-            <h2 className="text-[1rem] mt-5 text-[#ffab91]">
-              <span className="text-[#ffab91]">Time of creation :</span>{" "}
+            <h2 className="text-[1rem] mt-5 text-[#5EC2B7]">
+              <span className="text-[#5EC2B7]">Time of creation :</span>{" "}
               {new Date().toLocaleString() + ""}
             </h2>
           </div>
-          <div className="w-full p-5 sm:p-8 mt-8 sm:mt-16 border-2 border-[#ffab91] rounded-lg">
+          <div className="w-full p-5 sm:p-8 mt-8 sm:mt-16 border-2 border-[#5EC2B7] rounded-lg">
             <p className="text-[1.25rem]">Body here</p>
             <textarea
               type="text"
               id="body"
               onChange={handleNewNoteChange}
               placeholder="Note body"
-              className="w-full h-[180px] bg-[#ffab91]/20 text-[1rem] sm:text-[1.5rem] my-4 p-3 outline-none rounded-lg"
+              className="w-full h-[180px] bg-[#5EC2B7]/20 text-[1rem] sm:text-[1.5rem] my-4 p-3 outline-none rounded-lg"
               required
             />
           </div>

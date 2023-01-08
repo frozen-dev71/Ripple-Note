@@ -37,6 +37,7 @@ const Login = ({
                 id="password"
                 onChange={handleLoginChange}
                 placeholder="password"
+                minlength="6"
                 className="w-full bg-teal-400/20 my-4 p-3 outline-none rounded-lg"
               />
               <img
