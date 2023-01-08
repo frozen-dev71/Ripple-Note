@@ -185,6 +185,13 @@ function App() {
     }
   };
 
+    //to log out users
+    const logout = async () => {
+      signOut(auth).then(() => {
+        navigate("/");
+      });
+    };
+
   return (
     <Routes>
       <Route
