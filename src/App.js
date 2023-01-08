@@ -125,8 +125,12 @@ function App() {
     getUserDetails();
   }, [user]);
 
+  const [showLoader, setShowLoader] = useState(false);
+  const navigate = useNavigate();
+
 
   
+
 
   return (
     <Routes>
