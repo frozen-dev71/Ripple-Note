@@ -267,6 +267,19 @@ function App() {
     });
   }
 
+    //to formate date
+    const date = new Date();
+    const formattedDate = date
+      .toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+      .replace(/ /g, "-");
+
+
+      
+
   return (
     <Routes>
       <Route
