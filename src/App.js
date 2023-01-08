@@ -161,9 +161,29 @@ function App() {
       } catch (error) {
         setShowLoader(false);
         console.log(error.message);
-        alert("Oh good lord! USER ALREADY EXISTS!!");
+        alert("USER ALREADY EXISTS!!");
       }
     };
+
+      //to log in users
+  const login = async (e) => {
+    e.preventDefault();
+    setShowLoader(true);
+
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        loginForm.email,
+        loginForm.password
+      );
+      setShowLoader(false);
+      navigate("/notes");
+    } catch (error) {
+      setShowLoader(false);
+      console.log(error.message);
+      alert("INVALID USER CREDENTIALS!!");
+    }
+  };
 
   return (
     <Routes>
